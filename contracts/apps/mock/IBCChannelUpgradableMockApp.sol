@@ -9,6 +9,7 @@ import {IBCChannelUpgradableModuleBase} from "../commons/IBCChannelUpgradableMod
 import {IBCAppBase} from "../commons/IBCAppBase.sol";
 
 contract IBCChannelUpgradableMockApp is IBCMockApp, IBCChannelUpgradableModuleBase {
+    error ZZZ(address msgSender, address owner, address _this);
     constructor(IIBCHandler ibcHandler_) IBCMockApp(ibcHandler_) {}
 
     /**
@@ -49,6 +50,11 @@ contract IBCChannelUpgradableMockApp is IBCMockApp, IBCChannelUpgradableModuleBa
         override
         returns (bool)
     {
-        return msgSender == owner() || msgSender == address(this);
+        if (msgSender == owner() || msgSender == address(this)) {
+            return true;
+        } else {
+            revert ZZZ(msgSender, owner(), address(this));
+        }
+        //return msgSender == owner() || msgSender == address(this);
     }
 }
