@@ -34,7 +34,7 @@ abstract contract IBCChannelUpgradableModuleBase is
      */
     modifier onlyAuthorizedUpgrader(string calldata portId, string calldata channelId) {
         if (!_isAuthorizedUpgrader(portId, channelId, _msgSender())) {
-            revert IBCChannelUpgradableModuleUnauthorizedUpgrader();
+            revert IBCChannelUpgradableModuleUnauthorizedUpgrader(_msgSender(), owner(), address(this));
         }
         _;
     }

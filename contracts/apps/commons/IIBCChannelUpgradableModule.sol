@@ -6,7 +6,7 @@ import {Channel, UpgradeFields, Timeout} from "../../proto/Channel.sol";
 interface IIBCChannelUpgradableModuleErrors {
     // ------------------- Errors ------------------- //
 
-    error IBCChannelUpgradableModuleUnauthorizedUpgrader();
+    error IBCChannelUpgradableModuleUnauthorizedUpgrader(address caller, address owner, address _this);
     error IBCChannelUpgradableModuleInvalidTimeout();
     error IBCChannelUpgradableModuleInvalidConnectionHops();
     error IBCChannelUpgradableModuleUpgradeAlreadyExists();
