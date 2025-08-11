@@ -46,7 +46,7 @@ contract IBCChannelUpgradableMockApp is IBCMockApp, IBCChannelUpgradableModuleBa
 
     function _isAuthorizedUpgrader(string calldata, string calldata, address msgSender)
         internal
-        view
+        //view
         override
         returns (bool)
     {
