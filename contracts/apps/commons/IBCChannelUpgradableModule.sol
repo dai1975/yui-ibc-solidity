@@ -33,7 +33,7 @@ abstract contract IBCChannelUpgradableModuleBase is
      * @param channelId Channel identifier
      */
     modifier onlyAuthorizedUpgrader(string calldata portId, string calldata channelId) {
-        if (!_isAuthorizedUpgrader(portId, channelId, msg.sender) {
+        if (!_isAuthorizedUpgrader(portId, channelId, msg.sender)) {
 //        if (!_isAuthorizedUpgrader(portId, channelId, _msgSender())) {
             //revert IBCChannelUpgradableModuleUnauthorizedUpgrader(_msgSender(), owner(), address(this)); owner() is undeclared...
             revert IBCChannelUpgradableModuleUnauthorizedUpgrader(_msgSender(), msg.sender, address(this));
